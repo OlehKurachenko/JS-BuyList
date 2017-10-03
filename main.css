@@ -9,6 +9,7 @@ html {
 .block {
     border-radius: 4px;
     background-color: white;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.08);
 }
 
 .container1 {
@@ -28,13 +29,10 @@ html {
     width: 30%;
     height: auto;
     float: right;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.08);
-}
+    }
 
 .leftBlock {
     width: 65%;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.08);
-
 }
 
 .rightBlockTitle {
@@ -138,3 +136,18 @@ html {
     margin: auto;
 }
 
+.leftBlockPurhasedButton {
+    display: inline-block;
+
+    box-shadow: 0 0 0 1px rgba(34,36,38,.15) inset;
+    background: linear-gradient(transparent,rgba(0,0,0,.05)) #F8F8F8;
+    color: rgba(0,0,0,.87);
+
+    border-radius: 4px;
+
+    font-size: 10px;
+    padding: 10px 18px;
+    margin: 7px;
+
+    float: right;
+}
