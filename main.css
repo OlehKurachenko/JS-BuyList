@@ -1,6 +1,6 @@
 html {
     background-color: gainsboro;
-    min-width: 780px;
+    min-width: 450px;
 }
 
 * {
@@ -17,28 +17,111 @@ html {
     font-family: Icons, serif;
 }
 
-.container1 {
+.crossIcon:before {
+    font-size: 15px;
+    content: "✖";
+}
+
+.plusIcon:before {
+    font-size: 15px;
+    content: "➕";
+}
+
+.minusIcon:before {
+    font-size: 15px;
+    content: "➖";
+}
+
+.badge {
+    position: fixed;
+    bottom: -50px;
+    left: 20px;
+
+    background-color: darkorchid;
+    color: white;
+
+    width: 170px;
+    height: 120px;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    transition: all 1s ease;
+}
+
+.tooltipOwner {
+    position: relative;
+}
+
+.tooltipOwner::after {
+    content: attr(data-tooltip);
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+
+    display: block;
+    position: absolute;
+    visibility: hidden;
+
+    border-radius: 4px;
+    padding: 6px 2px 4px;
+    background-color: darkorchid;
+    transform: translateY(50%) scale(0.001, 0.001);
+    transition: all 0.5s ease;
+}
+
+.tooltipOwner:hover::after {
+    transition: all 0.5s ease;
+    transform: translateY(0px) scale(1, 1);
+    visibility: visible;
+}
+
+.badge:hover {
+    background-color: blue;
+    bottom: 0px;
+}
+
+.badge .title {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.badge .createdby {
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+.badge .authorname {
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.main {
     margin-top: 80px;
     margin-left: 3%;
     margin-right: 3%;
     width: 94%;
 }
 
-.center {
+.main .center {
     width: 100%;
     margin: auto;
     max-width: 1100px;
 }
 
-.rightBlock {
+.main .center .right {
+    display: inline-block;
     width: 30%;
     height: auto;
-    float: right;
     }
 
-.leftBlock {
+.main .center .left {
+    display: inline-block;
     height: auto;
-    width: 65%;
+    width: 68%;
+    float: left;
+    margin-right: 10px;
 }
 
 .rightBlockTitle {
@@ -84,10 +167,7 @@ html {
     border-radius: 10px;
     /*height: 15px;
     width: 15px;*/
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 6px;
+    padding: 3px 6px 3px 5px;
     float: inherit;
 }
 
@@ -101,12 +181,12 @@ html {
     border-top: 1px solid gainsboro;
 }
 
-.leftBlockAskConteiner {
+.main .center .left .addNew {
     padding: 12px;
     //position: relative;
 }
 
-.leftBlockAddButton {
+.main .center .left button.add {
     display: block;
     width: 100px;
     border: 1px solid dodgerblue;
@@ -121,7 +201,14 @@ html {
     float: right;
 }
 
-.leftBlockInput {
+.main .center .left .addNew button.add::after {
+    left: -15px;
+    top: -50px;
+
+    width: 130px;
+}
+
+.main .center .left .addNew input.input {
     width: 100%;
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
@@ -132,18 +219,17 @@ html {
 
 }
 
-.leftBlockInputSpan {
-    display: block;
-    margin-right: 110px;
+.main .center .left .addNew .inputBlock {
+    margin-right: 115px;
 }
 
-.leftBlockProduct {
+.main .center .left .container .product {
     height: 50px;
     background-color: white;
     border-top: 1px solid gainsboro;
 }
 
-.leftBlockProductName {
+.main .center .left .container .product .name {
     width: 100px;
 
     font-size: 15px;
@@ -151,7 +237,7 @@ html {
     margin: 15px;
 }
 
-.leftBlockProductButtons {
+.main .center .left .container .product .buttons {
     display: inline-block;
 
     height: 50px;
@@ -160,7 +246,7 @@ html {
     float: right;
 }
 
-.leftBlockContainerButton {
+.left .container .product .button {
     display: inline-block;
 
     border-radius: 4px;
@@ -170,7 +256,7 @@ html {
     font-size: 10px;
 }
 
-.leftBlockPurchasedButton {
+.left .container .product button.purchase {
     border: 1px solid silver;
     background: linear-gradient(transparent,rgba(0,0,0,.05)) #F8F8F8;
     color: rgba(0,0,0,.87);
@@ -180,8 +266,15 @@ html {
     float: right;
 }
 
-.leftBlockRemoveButton {
-    border: 1px solid firebrick;
+.left .container .product button.purchase::after {
+    top: -50px;
+    left: -25px;
+
+    width: 120px;
+}
+
+.main .center .left .product button.remove {
+    border: 1px solid red;
     background: red;
     color: white;
 
@@ -190,37 +283,24 @@ html {
     float: right;
 }
 
-.crossIcon:before {
-    font-size: 15px;
-    content: "✖";
+.main .center .left .container .product button.remove:after {
+    left: -50px;
+    top: -50px;
+
+    width: 130px;
 }
 
-.plusIcon:before {
-    font-size: 15px;
-    content: "➕";
-}
-
-.minusIcon:before {
-    font-size: 15px;
-    content: "➖";
-}
-
-.leftBlockContainerButtons {
-    left: 0;
-    right: 0;
-
-    background-color: red;
-}
-
-.leftBlockContainerSpacer1 {
+.main .center .left .container .product .spacer {
     display: inline-block;
+
+    width: 0px;
 
     margin: 10px 40px;
     float: right;
 }
 
-.leftBlockIncButton {
-    border: 1px solid green;
+.main .center .left .container .product button.inc {
+    border: 1px solid limegreen;
     background: limegreen;
     color: white;
 
@@ -229,14 +309,28 @@ html {
     padding: 6px 9px;
 }
 
-.leftBlockDecButton {
-    border: 1px solid firebrick;
+.main .center .left .container .product button.inc:after {
+    left: -50px;
+    top: -50px;
+
+    width: 130px;
+}
+
+.main .center .left .container .product button.dec {
+    border: 1px solid red;
     background: red;
     color: white;
 
     border-radius: 15px;
 
     padding: 6px 9px;
+}
+
+.main .center .left .container .product button.dec:after {
+    left: -50px;
+    top: -50px;
+
+    width: 130px;
 }
 
 .leftBlockProductQuantity {
@@ -247,4 +341,52 @@ html {
     font-size: 14px;
     background-color: rgb(232, 232, 232);
     padding: 3px 9px 2px;
+}
+
+@media print {
+    .badge {
+        background-color: white;
+        border: 3px solid black;
+        color: black;
+
+        height: 70px;
+
+        bottom: 0px;
+    }
+    
+    .badge .title {
+        visibility: hidden;
+        padding: 0px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .product .spacer {
+        margin: 10px 5px;
+    }
+}
+
+@media (max-width: 650px) {
+    .main {
+        margin-top: 20px;
+    }
+
+    .main .center .left {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main .center .right {
+        width: 100%;
+    }
+
+    .tooltipOwner:after {
+        transform: translateY(-50%) scale(0.001, 0.001);
+    }
+
+    .main .center .left .addNew button.add:after {
+        left: -30px;
+        top: 36px;
+    }
 }
