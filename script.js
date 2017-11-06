@@ -118,10 +118,6 @@ $(function () {
             }
         });
 
-        // TODO configure unPurchase button
-
-        // TODO configure right pane
-
         node.fadeIn(ANIMATION_TIME);
         //right_node.fadeIn("slow");
 
