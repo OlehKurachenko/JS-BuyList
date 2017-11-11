@@ -45,9 +45,17 @@ $(function () {
         var right_node = $(RIGHT_ITEM_TEMPLATE);
         var right_node_2 = $(RIGHT_ITEM_TEMPLATE);
 
-        node.find('#productName').text(title);
-        right_node.find('#rProductName').text(title);
-        right_node_2.find('#rProductName').text(title);
+        function setNewName(newName) {
+            if (newName.length > 16)
+                newName = newName.substring(0, 15) + "...";
+            node.find('#productName').text(newName);
+            right_node.find('#rProductName').text(newName);
+            right_node_2.find('#rProductName').text(newName);
+        }
+
+        setNewName(title);
+
+        node.find('#productNameInput').hide();
 
         node.find('#removeButton').click(function () {
             node.fadeOut(ANIMATION_TIME);
@@ -116,6 +124,30 @@ $(function () {
                     right_node_2.remove();
                 }, APPEAR_TIME);
             }
+        });
+
+        node.find('#productName').click(function () {
+            if (node.find('#purchaseButton').text().localeCompare(CORRECT_PURCHASED_TEXT) == 0) {
+                node.find('#productName').hide();
+                node.find('#productNameInput').show();
+                node.find('#productNameInput').select();
+            }
+        });
+
+        node.find('#productNameInput').keyup(function () {
+            if (event.keyCode === 13) {
+                if (node.find('#productNameInput').val())
+                    setNewName(node.find('#productNameInput').val());
+                node.find('#productNameInput').hide();
+                node.find('#productName').show();
+            }
+        });
+
+        node.find('#productNameInput').focusout(function () {
+            if (node.find('#productNameInput').val())
+                setNewName(node.find('#productNameInput').val());
+            node.find('#productNameInput').hide();
+            node.find('#productName').show();
         });
 
         node.fadeIn(ANIMATION_TIME);
